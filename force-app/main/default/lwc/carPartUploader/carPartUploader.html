@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Car Part Uploader" icon-name="custom:custom14" class="carPartsParserCard">
+        <div class="slds-m-around_medium">
+            <lightning-input type="file" 
+                accept=".json"
+                label="Input json file with car parts" onchange={onFileUpload}>
+            </lightning-input>
+        </div>
+        <template if:true={fileData}>
+            <p>{fileData.filename}</p>
+        </template>
+        <lightning-button variant="brand" label="Parse" title="Submit" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    </lightning-card>
+    <template if:true={newCarPartRecords}>
+        <div>
+            <lightning-datatable
+                key-field="Id"
+                data={newCarPartRecords}
+                columns={newCarPartColumns}>
+            </lightning-datatable>
+        </div>
+    </template>
+    
+</template>
